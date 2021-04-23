@@ -13,7 +13,7 @@ public class Menu {
     Scanner scanner = new Scanner(System.in);
     Shop shop = new Shop();
 
-    public void showHomeScreen(){
+    public void showHomeScreen() {
         String option = "";
 
         System.out.println("Welcome to the shop!"
@@ -25,7 +25,7 @@ public class Menu {
         System.out.print("Choose option: ");
         option = scanner.nextLine();
 
-        switch (option){
+        switch (option) {
             case "1":
                 collectUserInfoAndAddUser();
                 break;
@@ -72,11 +72,12 @@ public class Menu {
         User user = new User(userName, userEmail, balance, type, createdAt);
         System.out.println(shop.createUser(user));
     }
+
     private void showAllUsers() {
         ArrayList<User> users = shop.getUsers();
         int counter = 0;
         for (User currentUser : users) {
-            System.out.println(counter+ ". \t" + currentUser.getUserName() +
+            System.out.println(counter + ". \t" + currentUser.getUserName() +
                     " | " + currentUser.getUserEmail() +
                     " | " + currentUser.getBalance() + " euros" +
                     " | " + currentUser.getType() +
@@ -84,7 +85,8 @@ public class Menu {
             counter++;
         }
     }
-    private void deleteUser(){
+
+    private void deleteUser() {
         System.out.println("Remove user\n");
         System.out.println("Enter user ID: ");
 
@@ -93,7 +95,8 @@ public class Menu {
         System.out.println(message);
 
     }
-    private void collectProductInfoAndCreate(){
+
+    private void collectProductInfoAndCreate() {
         Product product = new Product();
         System.out.println("Enter product Name: ");
         product.setName(scanner.nextLine());
@@ -109,11 +112,12 @@ public class Menu {
 
         System.out.println(shop.createProduct(product));
     }
-    private void showAllProducts(){
+
+    private void showAllProducts() {
         ArrayList<Product> products = shop.getAllProduct();
         System.out.println("\n All available products\n");
         int counter = 0;
-        for (Product currentProduct: products){
+        for (Product currentProduct : products) {
             System.out.println(counter + ". \t" + currentProduct.getId() +
                     " | " + currentProduct.getName() +
                     " | " + currentProduct.getPrice() + " euros" +
@@ -122,6 +126,7 @@ public class Menu {
             counter++;
         }
     }
+
     private void sellProductToUser() {
         System.out.println("Enter your email address: ");
         String userEmail = scanner.nextLine();
@@ -134,53 +139,5 @@ public class Menu {
         System.out.println(shop.buyProduct(productName, userEmail, numberOfItems));
 
     }
-    /*
-     * Know who user is
-     * what user is buying
-     * How many copies user is buying
-     * do we have enough product to sell
-     * does user have enough balance
-     * deduct users balance
-     * deduct product from total available products
-     * */
-
-
-
-        /*User user = new User(balance);
-        //System.out.println("Enter your ID:");
-        //int userId = Integer.parseInt(scanner.nextLine());
-        //collectUserInfoAndAddUser();
-        //System.out.println("Your balance is " + user.getBalance + " euros");
-        System.out.println("Choose product");
-        showAllProducts();
-        System.out.println("\nEnter product ID: ");
-        int productId = Integer.parseInt(scanner.nextLine());
-        Product product = shop.getSingleProduct(productId);
-
-//Lai pievienotu user balance, kas jau ir pievienots iepriekš jāizmanto kaut ko līdzīgu kā getsingleproduct rindiņu virs šī komentāra
-        System.out.println("Enter your balance: ");
-        float balance = Float.parseFloat(scanner.nextLine());
-
-        System.out.println("How many " + product.getName() + " do you want?");
-        Integer amount = scanner.nextInt();
-
-        System.out.println("The sum of " + amount + " " + product.getName() + " is " + (amount* product.getPrice()));
-        System.out.println("Your balance now is " + (balance-amount*product.getPrice() + " euros!"));
-    }*/
 }
-/*
-public static void sellProduct() {
-        String prod = Input.askString("Which do you want to buy?");
 
-        for (Product product : products) {
-        System.out.println(product.name);
-
-        if (prod.equalsIgnoreCase(product.name) ) {
-                product.amount = product.amount-1;
-            }
-            System.out.println(product.name +" is sold to you and "+ product.amount + " left");;
-    }
-
-
-    }
- */
