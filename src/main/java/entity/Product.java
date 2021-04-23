@@ -10,6 +10,10 @@ public class Product {
     private int quantity;
     private LocalDate createdAt;
 
+    public Product(){
+
+    }
+
     public UUID getId() {
         return id;
     }

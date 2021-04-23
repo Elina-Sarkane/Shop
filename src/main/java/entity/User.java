@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 public class User {
-    private UUID userId;
+    private UUID id;
     private String userName;
     private String userEmail;
     private float balance;
@@ -15,11 +15,15 @@ public class User {
     private LocalDate createdAt;
 
     public User(String userName, String userEmail, float balance, UserType type, LocalDate createdAt) {
+        this.id = UUID.randomUUID();
         this.userName = userName;
         this.userEmail = userEmail;
         this.balance = balance;
         this.type = type;
         this.createdAt = createdAt;
+    }
+    public UUID getId() {
+        return id;
     }
     public String getUserName() {
         return userName;
@@ -35,5 +39,8 @@ public class User {
     }
     public LocalDate getCreatedAt() {
         return createdAt;
+    }
+    public void setBalance(float newBalance) {
+        this.balance = newBalance;
     }
 }

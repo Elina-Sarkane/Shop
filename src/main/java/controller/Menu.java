@@ -42,7 +42,7 @@ public class Menu {
                 showAllProducts();
                 break;
             case "6":
-                sellProduct();
+                sellProductToUser();
                 break;
             case "7":
                 System.out.println("Exiting shop!");
@@ -101,7 +101,7 @@ public class Menu {
         System.out.println("Product price e.g 10.50:");
         product.setPrice(Float.parseFloat(scanner.nextLine()));
 
-        System.out.println("Enter quantity: ");
+        System.out.println("Enter Product quantity: ");
         product.setQuantity(Integer.parseInt(scanner.nextLine()));
 
         product.setId(UUID.randomUUID());
@@ -122,13 +122,42 @@ public class Menu {
             counter++;
         }
     }
-    private void sellProduct(){
+    private void sellProductToUser() {
+        System.out.println("Enter your email address: ");
+        String userEmail = scanner.nextLine();
+
+        System.out.println("Enter product name: ");
+        String productName = scanner.nextLine();
+        System.out.println("How many items: ");
+        Integer numberOfItems = Integer.parseInt(scanner.nextLine());
+
+        System.out.println(shop.buyProduct(productName, userEmail, numberOfItems));
+
+    }
+    /*
+     * Know who user is
+     * what user is buying
+     * How many copies user is buying
+     * do we have enough product to sell
+     * does user have enough balance
+     * deduct users balance
+     * deduct product from total available products
+     * */
+
+
+
+        /*User user = new User(balance);
+        //System.out.println("Enter your ID:");
+        //int userId = Integer.parseInt(scanner.nextLine());
+        //collectUserInfoAndAddUser();
+        //System.out.println("Your balance is " + user.getBalance + " euros");
         System.out.println("Choose product");
         showAllProducts();
         System.out.println("\nEnter product ID: ");
         int productId = Integer.parseInt(scanner.nextLine());
         Product product = shop.getSingleProduct(productId);
 
+//Lai pievienotu user balance, kas jau ir pievienots iepriekš jāizmanto kaut ko līdzīgu kā getsingleproduct rindiņu virs šī komentāra
         System.out.println("Enter your balance: ");
         float balance = Float.parseFloat(scanner.nextLine());
 
@@ -137,5 +166,21 @@ public class Menu {
 
         System.out.println("The sum of " + amount + " " + product.getName() + " is " + (amount* product.getPrice()));
         System.out.println("Your balance now is " + (balance-amount*product.getPrice() + " euros!"));
-    }
+    }*/
 }
+/*
+public static void sellProduct() {
+        String prod = Input.askString("Which do you want to buy?");
+
+        for (Product product : products) {
+        System.out.println(product.name);
+
+        if (prod.equalsIgnoreCase(product.name) ) {
+                product.amount = product.amount-1;
+            }
+            System.out.println(product.name +" is sold to you and "+ product.amount + " left");;
+    }
+
+
+    }
+ */
